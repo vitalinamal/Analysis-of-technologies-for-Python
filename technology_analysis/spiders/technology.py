@@ -59,7 +59,6 @@ class TechnologySpider(scrapy.Spider):
         listed_skills = response.css(
             "ul.flex.flex-wrap.list-unstyled li span.ellipsis::text"
         ).getall()
-        listed_skills_text = " ".join(listed_skills).strip()
 
         found_skills = []
 
@@ -72,7 +71,7 @@ class TechnologySpider(scrapy.Spider):
                 found_skills.append(technology)
 
         extra_skills = [
-            skill for skill in listed_skills_text.split(" ") if skill in found_skills
+            skill for skill in listed_skills if skill in found_skills
         ]
         all_found_skills = list(set(found_skills + extra_skills))
         return all_found_skills
