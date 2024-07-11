@@ -64,14 +64,14 @@ class TechnologySpider(scrapy.Spider):
 
         for technology in self.technologies:
             if re.search(
-                r"\b" + re.escape(technology) + r"\b[.,/]*",
-                description_text,
-                re.IGNORECASE,
+                    r'\b' + re.escape(technology) + r'\b[.,\/]*',
+                    description_text,
+                    re.IGNORECASE
             ):
                 found_skills.append(technology)
 
         extra_skills = [
-            skill for skill in listed_skills if skill in found_skills
+            skill for skill in listed_skills if skill in self.technologies
         ]
         all_found_skills = list(set(found_skills + extra_skills))
         return all_found_skills
