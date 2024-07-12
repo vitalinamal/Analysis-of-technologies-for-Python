@@ -1,11 +1,10 @@
+import os
 import re
 from urllib.parse import urljoin
 
 import scrapy
-from scrapy.http import Response
-
 from dotenv import load_dotenv
-import os
+from scrapy.http import Response
 
 load_dotenv()
 technologies = os.getenv("TECHNOLOGIES").split(",")
